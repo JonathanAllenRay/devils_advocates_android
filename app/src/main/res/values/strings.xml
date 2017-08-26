@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Devil\'s Advocates</string>
+    <string name="start_game_button">Start Game</string>
+    <string name="instructions_button">How To Play</string>
+    <string name="settings_button">Settings</string>
+    <string name="title_activity_display_instructions">How To Play</string>
+    <string name="instructions_page">
+        "Welcome to Devil's Advocates, a pass-and-play drinking game. After starting a game, the "
+        "application will prompt you to enter all player names. After this is complete, the game "
+        "will start.\n\n"
+
+        "The game consists of rounds. Each round, two players will be selected to argue in favor of "
+        "something (usually something terrible). A judge is also selected. The players must then "
+        "rant in favor of their topic for the specified time without stopping or repeating "
+        "themselves. After both players have finished, the judge must decide who wins the round "
+        "based on the strength of the argument and how well the person flowed (i.e. how well he/she "
+        "spoke without pausing or repeating).\n\n"
+
+        "Then, the winner of the round will cycle out and the loser will stay for the next round. "
+        "The judge must sentence the loser by drinking. The loser has to drink an equal amount."
+        "When a player refuses to argue in favor of something, drink, or otherwise chooses to quit, "
+        "they are eliminated from the game. The game ends when there are only two people remaining. "
+        "These two people are the winners. I didn't think of a way to break the tie so you have to "
+        "figure that out yourself. Play Rock-Paper-Scissors or arm wrestle or knife fight. I don't "
+        "fucking care.\n\n"
+
+        "This game is recommended for 5+ players. As in, more than five players. But yes, also for "
+        "people over the age of five. The instructions above assume the default settings. For "
+        "explanation of your current custom settings (if there are any), see below.\n"
+    </string>
+    <string name="action_settings">Settings</string>
+</resources>
