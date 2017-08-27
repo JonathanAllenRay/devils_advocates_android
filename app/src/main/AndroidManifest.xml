@@ -19,7 +19,19 @@
         <activity
             android:name=".DisplayInstructions"
             android:label="@string/title_activity_display_instructions"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:parentActivityName=".MainActivity" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="jonathanray.classyconversations.MainActivity" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="jonathanray.classyconversations.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

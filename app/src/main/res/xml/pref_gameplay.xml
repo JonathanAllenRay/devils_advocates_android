@@ -1,0 +1,39 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- NOTE: EditTextPreference accepts EditText attributes. -->
+    <!-- NOTE: EditTextPreference's summary should be set to its value by the activity code. -->
+
+    <!-- NOTE: Hide buttons to simplify the UI. Users can touch outside the dialog to
+         dismiss it. -->
+    <!-- NOTE: ListPreference's summary should be set to its value by the activity code. -->
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="random_players"
+        android:summaryOff="New players for each round will be selected in a fixed order (skipping over those already occupied)."
+        android:summaryOn="New players for each round will be selected at random."
+        android:title="Randomize play order" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="random_judge"
+        android:summaryOff="New judges for each round will be selected in a fixed order (skipping over those already occupied)."
+        android:summaryOn="New judges for each round will be selected at random."
+        android:title="Randomize judge order" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="loser_stays"
+        android:summary="If this settings is on, the loser of each round will participate in the next round until he wins or quits the game."
+        android:title="Loser stays" />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="jury_mode"
+        android:summary="If this setting is on, the judge polls the room to vote for the round's winner (the judge also votes). In case of a tie, the judge's vote counts twice."
+        android:title="Trial By Jury Mode" />
+    <ListPreference
+        android:defaultValue="30"
+        android:entries="@array/round_times_options"
+        android:entryValues="@array/round_times_values"
+        android:key="round_time"
+        android:summary="The amount of time each player must speak in each round."
+        android:title="Round Time" />
+</PreferenceScreen>

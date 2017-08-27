@@ -22,6 +22,7 @@
         android:layout_width="186dp"
         android:layout_height="71dp"
         android:layout_marginBottom="48dp"
+        android:onClick="goToSettings"
         android:text="@string/settings_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
