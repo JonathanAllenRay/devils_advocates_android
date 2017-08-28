@@ -59,10 +59,11 @@
     <!-- Example settings for Notifications -->
     <string name="pref_header_notifications">App Preferences</string>
 
-    <string name="pref_title_new_message_notifications">New message notifications</string>
+    <string name="title_activity_initial_game_screen">Game Start: Add Players</string>
+    <string name="player_name_input">Player Name</string>
+    <string name="player_name_input_too_long">Invalid name.</string>
+    <string name="player_name_too_many">Too many players.</string>
 
-    <string name="pref_title_ringtone">Ringtone</string>
-    <string name="pref_ringtone_silent">Silent</string>
 
-    <string name="pref_title_vibrate">Vibrate</string>
+
 </resources>

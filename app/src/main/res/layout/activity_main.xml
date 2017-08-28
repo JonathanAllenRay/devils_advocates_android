@@ -33,6 +33,7 @@
         android:layout_width="186dp"
         android:layout_height="71dp"
         android:layout_marginBottom="24dp"
+        android:onClick="goToGameStart"
         android:text="@string/start_game_button"
         app:layout_constraintBottom_toTopOf="@+id/instructions_button"
         app:layout_constraintLeft_toLeftOf="parent"

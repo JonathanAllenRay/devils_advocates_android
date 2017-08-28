@@ -20,14 +20,24 @@
             android:name=".DisplayInstructions"
             android:label="@string/title_activity_display_instructions"
             android:parentActivityName=".MainActivity" />
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="jonathanray.classyconversations.MainActivity" />
+
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="jonathanray.classyconversations.MainActivity" />
 
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
             android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="jonathanray.classyconversations.MainActivity" />
+        </activity>
+        <activity
+            android:name=".InitialGameScreen"
+            android:label="@string/title_activity_initial_game_screen"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="jonathanray.classyconversations.MainActivity" />

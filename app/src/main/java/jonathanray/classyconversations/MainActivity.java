@@ -24,4 +24,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
+
+    public void goToGameStart(View view) {
+        Intent intent = new Intent(this, InitialGameScreen.class);
+        startActivity(intent);
+    }
 }
