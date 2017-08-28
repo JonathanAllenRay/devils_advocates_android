@@ -14,23 +14,47 @@
         android:id="@+id/button"
         android:layout_width="106dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="8dp"
         android:onClick="addPlayer"
         android:text="Add Player"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="6dp" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/playerListRV"
+        app:layout_constraintVertical_bias="0.92"
+        android:layout_marginLeft="1dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <EditText
         android:id="@+id/nameInput"
         android:layout_width="256dp"
         android:layout_height="50dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/player_name_input"
         android:textAlignment="center"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/playerListRV"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/button"
-        app:layout_constraintRight_toRightOf="parent" />
+        android:layout_marginLeft="8dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.923" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/playerListRV"
+        android:layout_width="376dp"
+        android:layout_height="447dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="-1dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
