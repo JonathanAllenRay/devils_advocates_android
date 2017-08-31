@@ -1,6 +1,7 @@
 package jonathanray.classyconversations;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -16,13 +17,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 
 public class InitialGameScreen extends AppCompatActivity {
 
     public static final int NAME_CHAR_LIMIT = 20;
     public static final int PLAYER_LIMIT = 16;
+    public static final int UNDO_LIMIT = 8;
     public ArrayList<Player> playerList;
+    public LinkedList<Player> undoQueue;
     public PlayerAdapter adapter;
 
     @Override
@@ -33,6 +37,7 @@ public class InitialGameScreen extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         playerList = new ArrayList<Player>();
+        undoQueue = new LinkedList<Player>();
         RecyclerView rvPlayerList = (RecyclerView) findViewById(R.id.playerListRV);
         // Create adapter passing in the sample user data
         adapter = new PlayerAdapter();
@@ -42,8 +47,20 @@ public class InitialGameScreen extends AppCompatActivity {
         rvPlayerList.setLayoutManager(new LinearLayoutManager(this));
     }
 
+    public void undoRemoval(View view) {
+        Player temp = null;
+        if (undoQueue.size() > 0) {
+            temp = undoQueue.removeFirst();
+        }
+        if (temp != null){
+            playerList.add(0, temp);
+            adapter.notifyItemInserted(0);
+        }
+    }
+
     // Add player method for the button
     public void addPlayer(View view) {
+        undoQueue.clear();;
         TextView textView = (TextView) findViewById(R.id.nameInput);
         if (playerList.size() >= PLAYER_LIMIT) {
             textView.setText(R.string.player_name_too_many);
@@ -79,11 +96,13 @@ public class InitialGameScreen extends AppCompatActivity {
         private String playerName;
         private int roundsWon;
         private int roundsInGame;
+        private int lastIndex;
 
         public Player(String name) {
             playerName = name;
             roundsWon = 0;
             roundsInGame = 0;
+            lastIndex = 0;
         }
 
         public void wonRound() {
@@ -97,6 +116,10 @@ public class InitialGameScreen extends AppCompatActivity {
         public String getName() {
             return playerName;
         }
+
+        public int getLastIndex() { return lastIndex; }
+
+        public void setLastIndex(int num) { lastIndex = num; }
     }
 
     // Code format adapted from https://guides.codepath.com/android/using-the-recyclerview
@@ -108,7 +131,7 @@ public class InitialGameScreen extends AppCompatActivity {
             Context context = parent.getContext();
             LayoutInflater inflater = LayoutInflater.from(context);
             View contactView = inflater.inflate(R.layout.rv_player_list, parent, false);
-            ViewHolder viewHolder = new ViewHolder(contactView);
+            ViewHolder viewHolder = new ViewHolder(context, contactView);
             return viewHolder;
         }
 
@@ -120,6 +143,7 @@ public class InitialGameScreen extends AppCompatActivity {
             textView.setText(player.getName());
             Button button = viewHolder.deleteButton;
             button.setText("Remove Player");
+            button.setTag(this);
         }
 
         @Override
@@ -127,15 +151,34 @@ public class InitialGameScreen extends AppCompatActivity {
             return playerList.size();
         }
 
-        public class ViewHolder extends RecyclerView.ViewHolder {
+
+
+        public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             public TextView nameTextView;
             public Button deleteButton;
+            private Context context;
 
-
-            public ViewHolder(View itemView) {
+            public ViewHolder(Context context, View itemView) {
                 super(itemView);
+                this.context = context;
                 nameTextView = (TextView) itemView.findViewById(R.id.contact_name);
                 deleteButton = (Button) itemView.findViewById(R.id.remove_button);
+                deleteButton.setOnClickListener(this);
+            }
+
+            // Function to remove player
+            @Override
+            public void onClick(View view) {
+                int index = getAdapterPosition();
+                if (index != RecyclerView.NO_POSITION) {
+                    Player temp = playerList.remove(index);
+                    temp.setLastIndex(index);
+                    undoQueue.add(0, temp);
+                    if (undoQueue.size() > UNDO_LIMIT) {
+                        undoQueue.remove(undoQueue.size() - 1);
+                    }
+                    adapter.notifyItemRemoved(index);
+                }
             }
         }
     }
