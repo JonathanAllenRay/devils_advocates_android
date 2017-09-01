@@ -14,9 +14,7 @@ public class DisplayInstructions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_instructions);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-            setupActionBar();
+        setupActionBar();
     }
 
     /**

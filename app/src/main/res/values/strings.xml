@@ -17,12 +17,10 @@
         "spoke without pausing or repeating).\n\n"
 
         "Then, the winner of the round will cycle out and the loser will stay for the next round. "
-        "The judge must sentence the loser by drinking. The loser has to drink an equal amount."
+        "The judge must sentence the loser by drinking. The loser has to drink an equal amount. "
         "When a player refuses to argue in favor of something, drink, or otherwise chooses to quit, "
-        "they are eliminated from the game. The game ends when there are only two people remaining. "
-        "These two people are the winners. I didn't think of a way to break the tie so you have to "
-        "figure that out yourself. Play Rock-Paper-Scissors or arm wrestle or knife fight. I don't "
-        "fucking care.\n\n"
+        "they are eliminated from the game. The game ends when everyone gets either too drunk or "
+        "too bored to keep playing.\n\n"
 
         "This game is recommended for 5+ players. As in, more than five players. But yes, also for "
         "people over the age of five.\n\n"
@@ -63,7 +61,6 @@
     <string name="player_name_input">Player Name</string>
     <string name="player_name_input_too_long">Invalid name.</string>
     <string name="player_name_too_many">Too many players.</string>
-
 
 
 </resources>

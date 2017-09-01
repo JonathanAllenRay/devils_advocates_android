@@ -3,6 +3,8 @@ package jonathanray.classyconversations;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +27,7 @@ public class InitialGameScreen extends AppCompatActivity {
     public static final int NAME_CHAR_LIMIT = 20;
     public static final int PLAYER_LIMIT = 16;
     public static final int UNDO_LIMIT = 8;
-    public ArrayList<Player> playerList;
+    public PlayerList playerList;
     public LinkedList<Player> undoQueue;
     public PlayerAdapter adapter;
 
@@ -33,10 +35,9 @@ public class InitialGameScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial_game_screen);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        playerList = new ArrayList<Player>();
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        playerList = new PlayerList();
         undoQueue = new LinkedList<Player>();
         RecyclerView rvPlayerList = (RecyclerView) findViewById(R.id.playerListRV);
         // Create adapter passing in the sample user data
@@ -56,6 +57,14 @@ public class InitialGameScreen extends AppCompatActivity {
             playerList.add(0, temp);
             adapter.notifyItemInserted(0);
         }
+    }
+
+    public void startGame(View view) {
+        Intent intent = new Intent(this, GameplayMain.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("players", playerList);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     // Add player method for the button
@@ -91,36 +100,7 @@ public class InitialGameScreen extends AppCompatActivity {
         return false;
     }
 
-    // Class to represent a player, keeps track of statistics for this game
-    public class Player {
-        private String playerName;
-        private int roundsWon;
-        private int roundsInGame;
-        private int lastIndex;
 
-        public Player(String name) {
-            playerName = name;
-            roundsWon = 0;
-            roundsInGame = 0;
-            lastIndex = 0;
-        }
-
-        public void wonRound() {
-            roundsWon++;
-        }
-
-        public void playedRound() {
-            roundsInGame++;
-        }
-
-        public String getName() {
-            return playerName;
-        }
-
-        public int getLastIndex() { return lastIndex; }
-
-        public void setLastIndex(int num) { lastIndex = num; }
-    }
 
     // Code format adapted from https://guides.codepath.com/android/using-the-recyclerview
     public class PlayerAdapter extends

@@ -37,11 +37,13 @@
             android:name=".InitialGameScreen"
             android:label="@string/title_activity_initial_game_screen"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustNothing">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="jonathanray.classyconversations.MainActivity" />
         </activity>
+        <activity android:name=".GameplayMain" />
     </application>
 
 </manifest>
