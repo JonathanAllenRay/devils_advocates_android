@@ -1,29 +1,39 @@
 package jonathanray.classyconversations;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameplayMain extends AppCompatActivity {
 
+    public static final int MIN_PLAYERS = 3;
+    public static final float TEXT_SIZE_NOT_ENOUGH_DUDES = 20;
+
+    private boolean enoughPlayers;
     private PlayerList playerList;
+    private Player playerOne;
+    private Player playerTwo;
+    private Player judge;
 
     boolean randomPlayers;
     boolean randomJudge;
     boolean loserStays;
     boolean juryMode;
     int timeLimit;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +44,85 @@ public class GameplayMain extends AppCompatActivity {
         playerList = b.getParcelable("players");
         TextView textView = (TextView) findViewById(R.id.titleView);
         textView.setText("Round " + playerList.getRoundNum());
+        if (playerList.size() < MIN_PLAYERS) {
+            enoughPlayers = false;
+        }
+        else {
+            enoughPlayers = true;
+        }
+        setupPrefs();
+        if (!enoughPlayers) {
+            textView.setTextSize(TEXT_SIZE_NOT_ENOUGH_DUDES);
+            textView.setText("Round " + playerList.getRoundNum() +": Insufficient players, 3 or more" +
+                    " required to play. Return to player screen and add more players.");
+            Button playerButton = (Button)findViewById(R.id.playerListButton);
+            playerButton.setVisibility(View.GONE);
+            playerButton.setVisibility(View.VISIBLE);
+
+        }
+        else {
+            if (randomPlayers) {
+                selectPlayersRandom();
+            }
+            else {
+                selectPlayersOrder();
+            }
+            setupPreRoundText();
+        }
+    }
+
+    //Send Player List back to list edit screen
+    public void returnToPlayerScreen(View view) {
+        Intent intent = new Intent(this, InitialGameScreen.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("players", playerList);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    // This isn't working, need to fix this shieeet
+    private void setupPrefs() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         randomPlayers = prefs.getBoolean("random_players", true);
         randomJudge = prefs.getBoolean("random_judge", true);
         loserStays = prefs.getBoolean("loser_stays", true);
-        juryMode = prefs.getBoolean("jury_mode", true);
+        juryMode = prefs.getBoolean("jury_mode", false);
         timeLimit = Integer.valueOf(prefs.getString("round_time", "20"));
-        if (playerList.size() < 3) {
-            textView.setText("Round " + playerList.getRoundNum() +": Insufficient players, 3 or more" +
-                    " required to play. Return to player screen and add more players.");
+    }
+
+    private void selectPlayersRandom() {
+        assert(playerList.size() >= MIN_PLAYERS);
+        Random random = new Random();
+        int num = random.nextInt(playerList.size());
+        playerOne = playerList.remove(num);
+        num = random.nextInt(playerList.size());;
+        playerTwo = playerList.remove(num);
+        getRandomJudge();
+    }
+
+    private void selectPlayersOrder() {
+        assert(playerList.size() >= MIN_PLAYERS);
+        playerOne = playerList.remove(0);
+        playerTwo = playerList.remove(0);
+        getRandomJudge();
+    }
+
+    private void setupPreRoundText() {
+        TextView textView = (TextView) findViewById(R.id.preround_text);
+        String jury = "";
+        if (juryMode) {
+            jury = " + Jury";
         }
+        textView.setText("Players: \n" + playerOne.getName() + "\nvs.\n" + playerTwo.getName()
+            + "\n\nJudge: " + judge.getName() + jury);
+
+    }
+
+    // Originally I planned to have in order and random judge selection, but
+    // for now, I'm just going to implement random judge order to make it easier.
+    private void getRandomJudge() {
+        Random random = new Random();
+        int num = random.nextInt(playerList.size());
+        judge = playerList.remove(num);
     }
 }

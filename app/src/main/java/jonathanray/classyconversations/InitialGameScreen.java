@@ -35,9 +35,11 @@ public class InitialGameScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial_game_screen);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         playerList = new PlayerList();
+        Bundle b = getIntent().getExtras();
+        if (b != null) {
+            playerList = b.getParcelable("players");
+        }
         undoQueue = new LinkedList<Player>();
         RecyclerView rvPlayerList = (RecyclerView) findViewById(R.id.playerListRV);
         // Create adapter passing in the sample user data
@@ -46,6 +48,7 @@ public class InitialGameScreen extends AppCompatActivity {
         rvPlayerList.setAdapter(adapter);
         // Set layout manager to position the items
         rvPlayerList.setLayoutManager(new LinearLayoutManager(this));
+        adapter.notifyDataSetChanged();
     }
 
     public void undoRemoval(View view) {
