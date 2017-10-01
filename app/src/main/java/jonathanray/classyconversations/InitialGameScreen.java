@@ -103,8 +103,6 @@ public class InitialGameScreen extends AppCompatActivity {
         return false;
     }
 
-
-
     // Code format adapted from https://guides.codepath.com/android/using-the-recyclerview
     public class PlayerAdapter extends
             RecyclerView.Adapter<PlayerAdapter.ViewHolder> {

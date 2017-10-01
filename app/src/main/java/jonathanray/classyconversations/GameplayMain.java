@@ -3,6 +3,7 @@ package jonathanray.classyconversations;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,11 +30,13 @@ public class GameplayMain extends AppCompatActivity {
     private Player playerTwo;
     private Player judge;
 
-    boolean randomPlayers;
-    boolean randomJudge;
-    boolean loserStays;
-    boolean juryMode;
-    int timeLimit;
+    private boolean randomPlayers;
+    private boolean randomJudge;
+    private boolean loserStays;
+    private boolean juryMode;
+    private int timeLimit;
+
+    private int counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class GameplayMain extends AppCompatActivity {
         setContentView(R.layout.activity_gameplay_main);
         Bundle b = getIntent().getExtras();
         playerList = b.getParcelable("players");
+        TextView clockText = (TextView) findViewById(R.id.countClock);
         TextView textView = (TextView) findViewById(R.id.titleView);
         textView.setText("Round " + playerList.getRoundNum());
         if (playerList.size() < MIN_PLAYERS) {
@@ -58,7 +62,6 @@ public class GameplayMain extends AppCompatActivity {
             Button playerButton = (Button)findViewById(R.id.playerListButton);
             playerButton.setVisibility(View.GONE);
             playerButton.setVisibility(View.VISIBLE);
-
         }
         else {
             if (randomPlayers) {
@@ -69,6 +72,31 @@ public class GameplayMain extends AppCompatActivity {
             }
             setupPreRoundText();
         }
+        setupClock();
+    }
+
+    // Code borrowed from http://abhiandroid.com/ui/countdown-timer
+    private void setupClock() {
+        final TextView clockText = (TextView) findViewById(R.id.countClock);
+        final Button clockButton = (Button) findViewById(R.id.startTurn);
+        clockText.setVisibility(View.GONE);
+        clockButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v) {
+                clockText.setVisibility(View.VISIBLE);
+                clockButton.setVisibility(View.GONE);
+                new CountDownTimer(timeLimit*1000, 1000){
+                    public void onTick(long millisUntilFinished){
+                        clockText.setText("Time left: " + millisUntilFinished / 1000);
+                    }
+                    public void onFinish(){
+                        clockText.setText("Done!");
+                        clockButton.setVisibility(View.VISIBLE);
+                    }
+                }.start();
+            }
+        });
     }
 
     //Send Player List back to list edit screen
