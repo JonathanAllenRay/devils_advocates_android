@@ -36,7 +36,7 @@ public class GameplayMain extends AppCompatActivity {
     private boolean juryMode;
     private int timeLimit;
 
-    private int counter;
+    private boolean firstTurn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class GameplayMain extends AppCompatActivity {
         setContentView(R.layout.activity_gameplay_main);
         Bundle b = getIntent().getExtras();
         playerList = b.getParcelable("players");
+        firstTurn = true;
         TextView clockText = (TextView) findViewById(R.id.countClock);
         TextView textView = (TextView) findViewById(R.id.titleView);
         textView.setText("Round " + playerList.getRoundNum());
@@ -60,8 +61,9 @@ public class GameplayMain extends AppCompatActivity {
             textView.setText("Round " + playerList.getRoundNum() +": Insufficient players, 3 or more" +
                     " required to play. Return to player screen and add more players.");
             Button playerButton = (Button)findViewById(R.id.playerListButton);
-            playerButton.setVisibility(View.GONE);
             playerButton.setVisibility(View.VISIBLE);
+            Button startTurn = (Button)findViewById(R.id.startTurn);
+            startTurn.setVisibility(View.GONE);
         }
         else {
             if (randomPlayers) {
@@ -75,7 +77,7 @@ public class GameplayMain extends AppCompatActivity {
         setupClock();
     }
 
-    // Code borrowed from http://abhiandroid.com/ui/countdown-timer
+    // Some code borrowed from http://abhiandroid.com/ui/countdown-timer
     private void setupClock() {
         final TextView clockText = (TextView) findViewById(R.id.countClock);
         final Button clockButton = (Button) findViewById(R.id.startTurn);
@@ -84,6 +86,7 @@ public class GameplayMain extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
+                final TextView playersTurn = (TextView) findViewById(R.id.playersTurn);
                 clockText.setVisibility(View.VISIBLE);
                 clockButton.setVisibility(View.GONE);
                 new CountDownTimer(timeLimit*1000, 1000){
@@ -91,12 +94,20 @@ public class GameplayMain extends AppCompatActivity {
                         clockText.setText("Time left: " + millisUntilFinished / 1000);
                     }
                     public void onFinish(){
-                        clockText.setText("Done!");
+                        clockText.setText("Done. Click start turn to continue.");
                         clockButton.setVisibility(View.VISIBLE);
+                        if (firstTurn) {
+                            firstTurn = false;
+                            playersTurn.setText(playerTwo.getName() + "'s turn");
+                        }
                     }
                 }.start();
             }
         });
+    }
+
+    private void pickNewTopic() {
+
     }
 
     //Send Player List back to list edit screen
@@ -143,7 +154,9 @@ public class GameplayMain extends AppCompatActivity {
         }
         textView.setText("Players: \n" + playerOne.getName() + "\nvs.\n" + playerTwo.getName()
             + "\n\nJudge: " + judge.getName() + jury);
-
+        TextView playersTurn = (TextView) findViewById(R.id.playersTurn);
+        playersTurn.setText(playerOne.getName() + "'s turn");
+        playersTurn.setVisibility(View.VISIBLE);
     }
 
     // Originally I planned to have in order and random judge selection, but
