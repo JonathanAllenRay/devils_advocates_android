@@ -62,5 +62,10 @@
     <string name="player_name_input_too_long">Invalid name.</string>
     <string name="player_name_too_many">Too many players.</string>
 
+    <string-array name="game_topics">
+        <item>temp1</item>
+        <item>temp2</item>
+        <item>temp3</item>
+    </string-array>
 
 </resources>

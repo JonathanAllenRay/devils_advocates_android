@@ -17,6 +17,8 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class GameplayMain extends AppCompatActivity {
@@ -81,11 +83,13 @@ public class GameplayMain extends AppCompatActivity {
     private void setupClock() {
         final TextView clockText = (TextView) findViewById(R.id.countClock);
         final Button clockButton = (Button) findViewById(R.id.startTurn);
+        final TextView topicText = (TextView) findViewById(R.id.topicView);
         clockText.setVisibility(View.GONE);
         clockButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
+                topicText.setText("Tell us why: " + pickNewTopic());
                 final TextView playersTurn = (TextView) findViewById(R.id.playersTurn);
                 clockText.setVisibility(View.VISIBLE);
                 clockButton.setVisibility(View.GONE);
@@ -100,14 +104,19 @@ public class GameplayMain extends AppCompatActivity {
                             firstTurn = false;
                             playersTurn.setText(playerTwo.getName() + "'s turn");
                         }
+                        else {
+                            // Todo: send to next activity, judgement screen, then etcccc
+                        }
                     }
                 }.start();
             }
         });
     }
 
-    private void pickNewTopic() {
-
+    private String pickNewTopic() {
+        List<String> tempTopics = Arrays.asList(getResources().getStringArray(R.array.game_topics));
+        Random r = new Random();
+        return tempTopics.get(r.nextInt(tempTopics.size()));
     }
 
     //Send Player List back to list edit screen
