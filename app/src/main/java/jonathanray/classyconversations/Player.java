@@ -59,4 +59,17 @@ public class Player {
     public int getLastIndex() { return lastIndex; }
 
     public void setLastIndex(int num) { lastIndex = num; }
+
+//    @Override
+//    public int describeContents() {
+//        return 0;
+//    }
+//
+//    @Override
+//    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeString(playerName);
+//        dest.writeInt(roundsWon);
+//        dest.writeInt(roundsInGame);
+//        dest.writeInt(lastIndex);
+//    }
 }

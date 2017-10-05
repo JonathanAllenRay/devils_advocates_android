@@ -9,12 +9,12 @@ import java.util.ArrayList;
 // http://www.anddev.org/novice-tutorials-f8/simple-tutorial-passing-arraylist-across-activities-t9996.html
 public class PlayerList extends ArrayList<Player> implements Parcelable {
 
-    int cursor;
     int roundNum;
+    String loserName;
 
     public PlayerList(){
         roundNum = 1;
-        cursor = 0;
+        loserName = null;
     }
 
 
@@ -22,8 +22,7 @@ public class PlayerList extends ArrayList<Player> implements Parcelable {
         this.clear();
         int size = in.readInt();
         this.roundNum = in.readInt();
-        this.cursor = in.readInt();
-
+        this.loserName = in.readString();
         for (int i = 0; i < size; i++) {
             Player player = new Player(in.readString());
             player.setRoundsWon(in.readInt());
@@ -36,37 +35,25 @@ public class PlayerList extends ArrayList<Player> implements Parcelable {
         int size = this.size();
         dest.writeInt(size);
         dest.writeInt(this.roundNum);
-        dest.writeInt(this.cursor);
+        dest.writeString(this.loserName);
         for (int i = 0; i < size; i++) {
             Player player = this.get(i);
             dest.writeString((player.getName()));
             dest.writeInt(player.getRoundsWon());
             dest.writeInt(player.getRoundsPlayed());
         }
-
-    }
-
-    public int getCursor() {
-        return cursor;
     }
 
     public int getRoundNum() {
         return roundNum;
     }
 
-    public void setCursor(int n) {
-        cursor = n;
-    }
+    public String getLoserName() { return loserName; }
+
+    public void setLoserName(String s) { loserName = s; }
 
     public void incrementRound() {
         roundNum++;
-    }
-
-    public void incrementCursor() {
-        cursor++;
-        if (cursor >= this.size()) {
-            cursor = 0;
-        }
     }
 
     public int describeContents() {

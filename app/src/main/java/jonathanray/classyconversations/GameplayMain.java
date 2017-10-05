@@ -175,4 +175,15 @@ public class GameplayMain extends AppCompatActivity {
         int num = random.nextInt(playerList.size());
         judge = playerList.remove(num);
     }
+
+    public void goToEndRound(View view) {
+        playerList.add(judge);
+        playerList.add(playerTwo);
+        playerList.add(playerOne);
+        Intent intent = new Intent(this, JudgingScreen.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("players", playerList);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 }

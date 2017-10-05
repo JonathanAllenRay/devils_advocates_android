@@ -44,6 +44,7 @@
                 android:value="jonathanray.classyconversations.MainActivity" />
         </activity>
         <activity android:name=".GameplayMain" />
+        <activity android:name=".JudgingScreen"></activity>
     </application>
 
 </manifest>
