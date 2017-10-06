@@ -105,7 +105,7 @@ public class GameplayMain extends AppCompatActivity {
                             playersTurn.setText(playerTwo.getName() + "'s turn");
                         }
                         else {
-                            // Todo: send to next activity, judgement screen, then etcccc
+                            goToEndRound();
                         }
                     }
                 }.start();
@@ -176,7 +176,7 @@ public class GameplayMain extends AppCompatActivity {
         judge = playerList.remove(num);
     }
 
-    public void goToEndRound(View view) {
+    private void goToEndRound() {
         playerList.add(judge);
         playerList.add(playerTwo);
         playerList.add(playerOne);
