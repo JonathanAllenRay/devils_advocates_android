@@ -75,6 +75,8 @@ public class GameplayMain extends AppCompatActivity {
                 selectPlayersOrder();
             }
             setupPreRoundText();
+            playerOne.playedRound();
+            playerTwo.playedRound();
         }
         setupClock();
     }
