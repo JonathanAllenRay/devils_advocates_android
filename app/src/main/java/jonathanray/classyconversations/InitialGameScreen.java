@@ -121,7 +121,7 @@ public class InitialGameScreen extends AppCompatActivity {
             Player player = playerList.get(position);
 
             TextView textView = viewHolder.nameTextView;
-            textView.setText(player.getName());
+            textView.setText(player.getName() + " R: " + player.getRoundsPlayed() + ", W: " + player.getRoundsWon());
             Button button = viewHolder.deleteButton;
             button.setText("Remove Player");
             button.setTag(this);
@@ -131,8 +131,6 @@ public class InitialGameScreen extends AppCompatActivity {
         public int getItemCount() {
             return playerList.size();
         }
-
-
 
         public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             public TextView nameTextView;

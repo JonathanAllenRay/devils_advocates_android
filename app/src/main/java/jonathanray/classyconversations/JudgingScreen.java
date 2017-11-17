@@ -1,5 +1,6 @@
 package jonathanray.classyconversations;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ public class JudgingScreen extends AppCompatActivity {
         winnerPicked = false;
         setupPrefs();
         setupText();
+        playerList.incrementRound();
     }
 
     private void setupPrefs() {
@@ -66,6 +68,22 @@ public class JudgingScreen extends AppCompatActivity {
             }
         }
         winnerPicked = true;
+    }
+
+    public void returnToPlayerList(View view) {
+        Intent intent = new Intent(this, InitialGameScreen.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("players", playerList);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void goToNextRound(View view) {
+        Intent intent = new Intent(this, GameplayMain.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("players", playerList);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     private void playerWins(boolean isOne, View view) {
