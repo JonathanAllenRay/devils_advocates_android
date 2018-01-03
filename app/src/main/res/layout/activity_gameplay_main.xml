@@ -28,7 +28,7 @@
         android:layout_marginTop="49dp"
         android:text="Players: X vs. Y\nJudge: Z"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -78,8 +78,8 @@
         app:layout_constraintBottom_toTopOf="@+id/countClock"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playersTurn"
-        app:layout_constraintVertical_bias="0.54" />
+        app:layout_constraintTop_toBottomOf="@+id/preround_text"
+        app:layout_constraintVertical_bias="0.779" />
 
     <TextView
         android:id="@+id/playersTurn"
@@ -90,27 +90,31 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="14sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/topicView"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/preround_text"
-        app:layout_constraintVertical_bias="0.145"
+        app:layout_constraintVertical_bias="0.636"
         tools:text="[player]'s Turn" />
 
     <TextView
         android:id="@+id/countClock"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="168dp"
+        android:layout_marginBottom="64dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
-        android:textSize="24sp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playersTurn"
+        app:layout_constraintVertical_bias="0.96"
         tools:text="countClock" />
 
 </android.support.constraint.ConstraintLayout>

@@ -6,10 +6,12 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:screenOrientation="portrait"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,6 +21,7 @@
         <activity
             android:name=".DisplayInstructions"
             android:label="@string/title_activity_display_instructions"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity" />
 
         <meta-data
@@ -28,6 +31,7 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -36,6 +40,7 @@
         <activity
             android:name=".InitialGameScreen"
             android:label="@string/title_activity_initial_game_screen"
+            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustNothing">
@@ -43,8 +48,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="jonathanray.classyconversations.MainActivity" />
         </activity>
-        <activity android:name=".GameplayMain" />
-        <activity android:name=".JudgingScreen"></activity>
+        <activity android:name=".GameplayMain"
+            android:screenOrientation="portrait" />
+        <activity android:name=".JudgingScreen"
+            android:screenOrientation="portrait" ></activity>
     </application>
 
 </manifest>
+
+

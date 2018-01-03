@@ -20,8 +20,11 @@
         android:text="Add Player"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/nameInput"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintTop_toTopOf="@+id/nameInput"
+        android:layout_marginTop="0dp"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/nameInput"
@@ -32,16 +35,16 @@
         android:text="@string/player_name_input"
         android:textAlignment="center"
         android:layout_marginEnd="13dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/playerListRV"
         app:layout_constraintLeft_toRightOf="@+id/button"
-        android:layout_marginLeft="13dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        android:layout_marginBottom="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        android:layout_marginLeft="45dp"
+        app:layout_constraintVertical_bias="0.785"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintHorizontal_bias="1.0" />
 
     <Button
         android:id="@+id/button2"
@@ -51,13 +54,12 @@
         android:layout_marginStart="8dp"
         android:onClick="undoRemoval"
         android:text="Undo Remove"
-        android:layout_marginLeft="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="16dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/playerListRV"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintRight_toLeftOf="@+id/button3"
+        android:layout_marginRight="8dp" />
 
     <Button
         android:id="@+id/button3"
@@ -65,43 +67,31 @@
         android:layout_height="53dp"
         android:onClick="startGame"
         android:text="Start or Resume"
-        app:layout_constraintLeft_toRightOf="@+id/button2"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintRight_toLeftOf="@+id/button5"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintHorizontal_bias="0.59" />
+        android:layout_marginBottom="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <Button
         android:id="@+id/button5"
         android:layout_width="100dp"
         android:layout_height="53dp"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:onClick="endGame"
         android:text="End Game"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playerListRV"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="16dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/playerListRV"
         android:layout_width="360dp"
         android:layout_height="405dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/button3" />
 
