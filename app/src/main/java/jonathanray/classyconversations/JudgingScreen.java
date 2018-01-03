@@ -52,6 +52,10 @@ public class JudgingScreen extends AppCompatActivity {
         playerTwoButton.setText(playerList.get(playerList.size() - 2).getName() + " wins.");
     }
 
+    public void onBackPressed() {
+        // nothing
+    }
+
     // Pattern borrowed from https://stackoverflow.com/questions/3412180/
     // how-to-determine-which-button-pressed-on-android
     public void selectWinner(View view) {

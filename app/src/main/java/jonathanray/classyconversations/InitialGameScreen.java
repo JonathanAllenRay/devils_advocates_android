@@ -70,6 +70,16 @@ public class InitialGameScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void endGame(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        // Add are you sure
+        startActivity(intent);
+    }
+
+    public void onBackPressed() {
+        // nothing
+    }
+
     // Add player method for the button
     public void addPlayer(View view) {
         undoQueue.clear();;

@@ -121,6 +121,9 @@ public class GameplayMain extends AppCompatActivity {
         return tempTopics.get(r.nextInt(tempTopics.size()));
     }
 
+    public void onBackPressed() {
+        // nothing
+    }
     //Send Player List back to list edit screen
     public void returnToPlayerScreen(View view) {
         Intent intent = new Intent(this, InitialGameScreen.class);
