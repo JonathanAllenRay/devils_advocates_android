@@ -59,6 +59,8 @@ public class GameplayMain extends AppCompatActivity {
         }
         setupPrefs();
         if (!enoughPlayers) {
+            TextView preText = (TextView) findViewById(R.id.preround_text);
+            preText.setVisibility(View.INVISIBLE);
             textView.setTextSize(TEXT_SIZE_NOT_ENOUGH_DUDES);
             textView.setText("Round " + playerList.getRoundNum() +": Insufficient players, 3 or more" +
                     " required to play. Return to player screen and add more players.");

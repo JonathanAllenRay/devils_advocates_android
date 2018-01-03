@@ -1,6 +1,8 @@
 package jonathanray.classyconversations;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcel;
@@ -72,12 +74,11 @@ public class InitialGameScreen extends AppCompatActivity {
 
     public void endGame(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        // Add are you sure
         startActivity(intent);
     }
 
     public void onBackPressed() {
-        // nothing
+        // Nothing for now
     }
 
     // Add player method for the button
