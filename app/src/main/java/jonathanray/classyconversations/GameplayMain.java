@@ -124,7 +124,7 @@ public class GameplayMain extends AppCompatActivity {
     }
 
     public void onBackPressed() {
-        // nothing
+        // nothing for now, could end game in future if time
     }
     //Send Player List back to list edit screen
     public void returnToPlayerScreen(View view) {
@@ -135,7 +135,6 @@ public class GameplayMain extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // This isn't working, need to fix this shieeet
     private void setupPrefs() {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         randomPlayers = prefs.getBoolean("random_players", true);
