@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ClassyConversations.iml" filepath="$PROJECT_DIR$/ClassyConversations.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/devils_advocates_android_checkout.iml" filepath="$PROJECT_DIR$/devils_advocates_android_checkout.iml" />
     </modules>
   </component>
 </project>
