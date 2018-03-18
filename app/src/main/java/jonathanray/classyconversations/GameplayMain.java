@@ -93,7 +93,7 @@ public class GameplayMain extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                topicText.setText("Tell us why: " + pickNewTopic());
+                topicText.setText("Explain: " + pickNewTopic());
                 final TextView playersTurn = (TextView) findViewById(R.id.playersTurn);
                 clockText.setVisibility(View.VISIBLE);
                 clockButton.setVisibility(View.GONE);
