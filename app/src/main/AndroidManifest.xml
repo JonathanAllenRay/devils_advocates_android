@@ -32,6 +32,7 @@
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
             android:screenOrientation="portrait"
+            android:theme="@style/PrefAppTheme"
             android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -53,6 +54,8 @@
         <activity android:name=".JudgingScreen"
             android:screenOrientation="portrait" ></activity>
     </application>
+
+
 
 </manifest>
 

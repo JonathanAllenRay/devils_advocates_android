@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
         android:text="@string/instructions_page"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp" />
 
 </android.support.v4.widget.NestedScrollView>

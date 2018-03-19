@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     tools:context="jonathanray.classyconversations.MainActivity">
 
+
     <Button
         android:id="@+id/instructions_button"
         android:layout_width="186dp"
         android:layout_height="71dp"
         android:layout_marginBottom="24dp"
+        android:backgroundTint="@android:color/background_light"
         android:onClick="goToInstructions"
         android:text="@string/instructions_button"
         app:layout_constraintBottom_toTopOf="@+id/settings_button"
@@ -22,6 +24,7 @@
         android:layout_width="186dp"
         android:layout_height="71dp"
         android:layout_marginBottom="48dp"
+        android:backgroundTint="@android:color/background_light"
         android:onClick="goToSettings"
         android:text="@string/settings_button"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,6 +36,7 @@
         android:layout_width="186dp"
         android:layout_height="71dp"
         android:layout_marginBottom="24dp"
+        android:backgroundTint="@android:color/background_light"
         android:onClick="goToGameStart"
         android:text="@string/start_game_button"
         app:layout_constraintBottom_toTopOf="@+id/instructions_button"
@@ -47,6 +51,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="serif"
         android:text="Devil's Advocates"
+        android:textColor="@color/fontLight"
         android:textSize="42sp"
         app:layout_constraintBottom_toTopOf="@+id/play_button"
         app:layout_constraintLeft_toLeftOf="parent"
