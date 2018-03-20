@@ -51,6 +51,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="serif"
         android:text="Devil's Advocates"
+        android:textAlignment="center"
         android:textColor="@color/fontLight"
         android:textSize="42sp"
         app:layout_constraintBottom_toTopOf="@+id/play_button"
