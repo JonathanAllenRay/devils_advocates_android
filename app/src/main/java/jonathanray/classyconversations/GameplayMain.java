@@ -62,14 +62,16 @@ public class GameplayMain extends AppCompatActivity {
             TextView preText = (TextView) findViewById(R.id.preround_text);
             preText.setVisibility(View.INVISIBLE);
             textView.setTextSize(TEXT_SIZE_NOT_ENOUGH_DUDES);
-            textView.setText("Round " + playerList.getRoundNum() +": Insufficient players, 3 or more" +
+            textView.setText("Round " + playerList.getRoundNum() + ": Insufficient players, 3 or more" +
                     " required to play. Return to player screen and add more players.");
-            Button playerButton = (Button)findViewById(R.id.playerListButton);
+            Button playerButton = (Button) findViewById(R.id.playerListButton);
             playerButton.setVisibility(View.VISIBLE);
-            Button startTurn = (Button)findViewById(R.id.startTurn);
+            Button startTurn = (Button) findViewById(R.id.startTurn);
             startTurn.setVisibility(View.GONE);
         }
         else {
+            final TextView topicText = (TextView) findViewById(R.id.topicView);
+            topicText.setText("Explain: " + pickNewTopic());
             if (randomPlayers) {
                 selectPlayersRandom();
             }
@@ -88,25 +90,25 @@ public class GameplayMain extends AppCompatActivity {
         final TextView clockText = (TextView) findViewById(R.id.countClock);
         final Button clockButton = (Button) findViewById(R.id.startTurn);
         final TextView topicText = (TextView) findViewById(R.id.topicView);
-        clockText.setVisibility(View.GONE);
+        clockText.setVisibility(View.INVISIBLE);
         clockButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
-                topicText.setText("Explain: " + pickNewTopic());
                 final TextView playersTurn = (TextView) findViewById(R.id.playersTurn);
                 clockText.setVisibility(View.VISIBLE);
-                clockButton.setVisibility(View.GONE);
+                clockButton.setVisibility(View.INVISIBLE);
                 new CountDownTimer(timeLimit*1000, 1000){
                     public void onTick(long millisUntilFinished){
                         clockText.setText("Time left: " + millisUntilFinished / 1000);
                     }
                     public void onFinish(){
-                        clockText.setText("Done. Click start turn to continue.");
+                        clockText.setText("");
                         clockButton.setVisibility(View.VISIBLE);
                         if (firstTurn) {
                             firstTurn = false;
                             playersTurn.setText(playerTwo.getName() + "'s turn");
+                            topicText.setText("Explain: " + pickNewTopic());
                         }
                         else {
                             goToEndRound();

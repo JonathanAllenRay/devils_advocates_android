@@ -9,23 +9,22 @@
         "application will prompt you to enter all player names. After this is complete, the game "
         "will start.\n\n"
 
-        "The game consists of rounds. Each round, two players will be selected to argue in favor of "
-        "something (usually something terrible). A judge is also selected. The players must then "
-        "rant in favor of their topic for the specified time without stopping or repeating "
-        "themselves. After both players have finished, the judge must decide who wins the round "
+        "The game consists of rounds. Each round, two players will be selected to explain something "
+        "(usually something terrible) regardless of if they disagree with it or don't understand it.
+        "A judge is also selected who holds the phone, reads the topics, and selects the winner. "
+        "The players must then rant in favor of their topic for the specified time without stopping
+        "or repeating themselves. After both players have finished, the judge must decide who wins the round "
         "based on the strength of the argument and how well the person flowed (i.e. how well he/she "
         "spoke without pausing or repeating).\n\n"
 
         "Then, the winner of the round will cycle out and the loser will stay for the next round. "
         "The judge must sentence the loser by drinking. The loser has to drink an equal amount. "
-        "When a player refuses to argue in favor of something, drink, or otherwise chooses to quit, "
-        "they are eliminated from the game. The game ends when everyone gets either too drunk or "
-        "too bored to keep playing.\n\n"
+        "The game ends when everyone gets either too drunk or too bored to keep playing.\n\n"
 
         "This game is recommended for 5+ players. As in, more than five players. But yes, also for "
         "people over the age of five.\n\n"
 
-        "Note: The instructions above assume the default settings.\n\n"
+        "The instructions above assume the default settings.\n\n"
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_settings">Settings</string>
@@ -74,7 +73,7 @@
         <item>The plot of the Bible</item>
         <item>Why you should vacation in North Korea</item>
         <item>The pros and cons of eating ass</item>
-        <item>The pros and cons of using mashes potatoes as lube</item>
+        <item>The pros and cons of using mashed potatoes as lube</item>
         <item>How fuckin\' magnets work</item>
         <item>Why you should start using heroin</item>
         <item>Why single-ply toilet paper is the best</item>
