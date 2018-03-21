@@ -92,7 +92,9 @@ public class InitialGameScreen extends AppCompatActivity {
             String inputName = editText.getText().toString();
             // If name is invalid, display message. If it works, empty input box.
             if (inputName.length() > NAME_CHAR_LIMIT || inputName.length() <= 0 || isNameInUse(inputName)) {
-                textView.setText(R.string.player_name_input_too_long);
+                textView.setText("");
+                textView.setHint("Invalid name");
+
             } else {
                 // Successful add
                 textView.setText(R.string.player_name_input);
